@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Regex Tool</title>
+</head>
+<body>
+    <h2>Mini Regex Matcher</h2>
+
+    <form method="POST" action="/">
+        <label>Test String:</label><br>
+        <textarea name="test_string" rows="4" cols="50"></textarea><br><br>
+
+        <label>Regex Pattern:</label><br>
+        <input type="text" name="pattern"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    {% if error %}
+        <p style="color: red;"><b>Error:</b> {{ error }}</p>
+    {% endif %}
+
+    {% if matches %}
+        <h3>Matched Strings:</h3>
+        <ul>
+            {% for m in matches %}
+                <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+    {% elif matches is not none %}
+        <p>No matches found.</p>
+    {% endif %}
+</body>
+</html>
